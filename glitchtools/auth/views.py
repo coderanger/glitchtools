@@ -23,9 +23,9 @@ def login(request):
 
 def token(request):
     if 'error' in request.GET:
-        raise Exception # Do something
+        raise Exception(request.GET['error'])
     elif 'code' not in request.GET:
-        raise Exception # Do more something
+        raise Exception('No authorization code given')
     r = requests.post(settings.GLITCH_API_URL+'/oauth2/token?', {
         'grant_type': 'authorization_code',
         'code': request.GET['code'],
@@ -34,14 +34,9 @@ def token(request):
         'redirect_uri': request.build_absolute_uri(reverse('glitchtools-auth-token')),
     }, timeout=2)
     if r.status_code != 200:
-        raise Exception
+        raise Exception(r.content)
     token = json.loads(r.content)
-    r = requests.get(settings.GLITCH_API_URL+'/simple/auth.check', {'oauth_token': token['access_token']}, timeout=2)
-    if r.status_code != 200:
-        raise Exception
-    auth = json.loads(r.content)
-    if not auth.get('ok'):
-        raise Exception
+    auth = request.glitch_api.auth.check(oauth_token=token['access_token'])
     scope = GlitchUser.SCOPES_MAP[token['scope']]
     try:
         glitch_user = GlitchUser.objects.get(tsid=auth['player_tsid'])
