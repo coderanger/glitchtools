@@ -1,4 +1,4 @@
 Django
 Django-Celery
-oauth2
+requests
 

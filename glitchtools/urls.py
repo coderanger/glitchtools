@@ -5,15 +5,7 @@ from django.conf.urls.defaults import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'glitchtools.views.home', name='home'),
-    # url(r'^glitchtools/', include('glitchtools.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^login/', 'glitchtools.core.views.login'),
+    url(r'^login/', include('glitchtools.auth.urls')),
     url(r'', 'glitchtools.core.views.comingsoon'),
 )

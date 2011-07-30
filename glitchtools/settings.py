@@ -99,6 +99,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'glitchtools.auth.middleware.GlitchUserMiddleware',
 )
 
 ROOT_URLCONF = 'glitchtools.urls'
@@ -120,6 +121,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'glitchtools.auth',
     'glitchtools.core',
 )
 
@@ -147,4 +149,4 @@ LOGGING = {
 }
 
 GLITCH_API_CREDENTIALS = json.load(open(os.path.join(PROJECT_ROOT, '.glitchapi.txt')))
-
+GLITCH_API_URL = 'http://api.glitch.com'
