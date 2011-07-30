@@ -2,7 +2,7 @@ import datetime
 
 from django.contrib.auth.models import User
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from glitchtools.utils.db import TSIDField
 
@@ -19,4 +19,7 @@ class GlitchUser(models.Model):
     token = models.CharField(_('token'), max_length=128)
     scope = models.PositiveSmallIntegerField(_('scope'), choices=SCOPES)
     last_update = models.DateTimeField(_('last update'), default=datetime.datetime.utcfromtimestamp(0))
-    location = TSIDField(_('location'), default='')
+    location = TSIDField(_('location'), default='', blank=True)
+
+    def __unicode__(self):
+        return self.tsid
