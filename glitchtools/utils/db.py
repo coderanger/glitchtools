@@ -1,5 +1,6 @@
 import operator
 
+from django.db import models
 from django.db.models.expressions import F, ExpressionNode
 
 EXPRESSION_NODE_CALLBACKS = {
@@ -56,3 +57,18 @@ def update(instance, **kwargs):
     # If you use an ORM cache, make sure to invalidate the instance!
     #cache.set(djangocache.get_cache_key(instance=instance), None, 5)
     return rows_affected
+
+
+class TSIDField(models.CharField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('max_length', 15)
+        super(TSIDField, self).__init__(*args, **kwargs)
+
+    def south_field_triple(self):
+            "Returns a suitable description of this field for South."
+            # We'll just introspect the _actual_ field.
+            from south.modelsinspector import introspector
+            field_class = "django.db.models.fields.CharField"
+            args, kwargs = introspector(self)
+            # That's our definition!
+            return (field_class, args, kwargs)
