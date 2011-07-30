@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'djcelery',
     'glitchtools.auth',
     'glitchtools.core',
 )
@@ -144,6 +145,9 @@ LOGGING = {
         },
     }
 }
+
+import djcelery
+djcelery.setup_loader()
 
 GLITCH_API_CREDENTIALS = json.load(open(os.path.join(PROJECT_ROOT, '.glitchapi.txt')))
 GLITCH_API_URL = 'http://api.glitch.com'
