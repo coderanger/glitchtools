@@ -6,4 +6,6 @@
 *.css
 .glitchapi*.txt
 *.db
+static/*
+.epio-app
 
