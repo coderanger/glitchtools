@@ -150,5 +150,7 @@ LOGGING = {
 import djcelery
 djcelery.setup_loader()
 
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
 GLITCH_API_CREDENTIALS = json.load(open(os.path.join(PROJECT_ROOT, '.glitchapi.txt')))
 GLITCH_API_URL = 'http://api.glitch.com'
