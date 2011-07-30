@@ -3,6 +3,10 @@ import os
 
 from django.utils import simplejson as json
 
+# For Celery
+# import eventlet
+# eventlet.monkey_patch(psycopg=True, thread=True)
+
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = True

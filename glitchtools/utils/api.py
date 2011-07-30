@@ -1,5 +1,6 @@
 from django.conf import settings
-from requests import async as requests
+#from requests import async as requests
+import requests
 
 from glitchtools.utils import json
 

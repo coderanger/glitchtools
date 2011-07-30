@@ -4,10 +4,10 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login as django_login
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from requests import async as requests
 
 from glitchtools.users.models import GlitchUser
 from glitchtools.utils import json
+from glitchtools.utils.api import requests
 from glitchtools.utils.db import update
 
 def login(request):
