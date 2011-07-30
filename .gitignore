@@ -1,0 +1,7 @@
+.DS_Store
+.venv
+*.pyc
+*.pyo
+.sass-cache
+*.css
+
