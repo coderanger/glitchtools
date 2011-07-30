@@ -1,0 +1,59 @@
+[
+  {
+    "pk": 1,
+    "model": "djcelery.periodictask",
+    "fields": {
+      "task": "celery.backend_cleanup",
+      "name": "celery.backend_cleanup",
+      "exchange": null,
+      "last_run_at": "2011-07-30 04:00:00",
+      "args": "[]",
+      "enabled": true,
+      "routing_key": null,
+      "crontab": 1,
+      "interval": null,
+      "queue": null,
+      "total_run_count": 1,
+      "expires": null,
+      "kwargs": "{}",
+      "date_changed": "2011-07-30 04:00:00"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "djcelery.periodictask",
+    "fields": {
+      "task": "glitchtools.users.tasks.update_users",
+      "name": "Update users",
+      "exchange": null,
+      "last_run_at": "2011-07-30 14:42:43",
+      "args": "[]",
+      "enabled": true,
+      "routing_key": null,
+      "crontab": null,
+      "interval": 1,
+      "queue": null,
+      "total_run_count": 179,
+      "expires": null,
+      "kwargs": "{}",
+      "date_changed": "2011-07-30 14:42:43"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "djcelery.crontabschedule",
+    "fields": {
+      "day_of_week": "*",
+      "hour": "4",
+      "minute": "0"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "djcelery.intervalschedule",
+    "fields": {
+      "every": 15,
+      "period": "seconds"
+    }
+  }
+]
