@@ -12,7 +12,7 @@ class GlitchBackend(object):
             return User.objects.select_related('glitch_user').get(glitch_user__tsid=tsid)
         except User.DoesNotExist:
             user = User.objects.create_user(username, '', '')
-            GlitchUser.objects.create(user=user, tsid=tsid, token=token, scope=scope)
+            user.glitch_user = GlitchUser.objects.create(user=user, tsid=tsid, token=token, scope=scope)
             return user
 
     def get_user(self, user_id):
