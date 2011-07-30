@@ -10,7 +10,7 @@ from glitchtools.utils.redis import redis
 def update_users():
     update_cutoff = datetime.datetime.utcnow() - datetime.timedelta(minutes=1)
     login_cutoff = datetime.datetime.utcnow() - datetime.timedelta(hours=1)
-    for tsid in GlitchUser.objects.filter(last_update__lt=update_cutoff, user__last_login__gt=login_cutoff).values_list('tsid', flat=True):
+    for tsid in GlitchUser.objects.filter(last_update__lt=update_cutoff, last_login__gt=login_cutoff).values_list('tsid', flat=True):
         update_user.apply_async(args=[tsid])
 
 
