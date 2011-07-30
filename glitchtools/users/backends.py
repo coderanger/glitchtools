@@ -1,5 +1,4 @@
-from django.conf import settings
-from django.contrib.auth.models import User, check_password
+from django.contrib.auth.models import User
 
 from glitchtools.users.models import GlitchUser
 
