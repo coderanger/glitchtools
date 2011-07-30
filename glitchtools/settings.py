@@ -130,8 +130,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'djcelery',
     'south',
-    'glitchtools.users',
     'glitchtools.core',
+    'glitchtools.users',
+    'glitchtools.map',
 )
 
 # A sample logging configuration. The only tangible logging

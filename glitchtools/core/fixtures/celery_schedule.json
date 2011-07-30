@@ -26,17 +26,37 @@
       "task": "glitchtools.users.tasks.update_users",
       "name": "Update users",
       "exchange": null,
-      "last_run_at": "2011-07-30 14:42:43",
+      "last_run_at": "2011-07-30 15:25:14",
       "args": "[]",
       "enabled": true,
       "routing_key": null,
       "crontab": null,
       "interval": 1,
       "queue": null,
-      "total_run_count": 179,
+      "total_run_count": 349,
       "expires": null,
       "kwargs": "{}",
-      "date_changed": "2011-07-30 14:42:43"
+      "date_changed": "2011-07-30 15:25:19"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "djcelery.periodictask",
+    "fields": {
+      "task": "glitchtools.map.tasks.update_hubs",
+      "name": "Update hubs",
+      "exchange": null,
+      "last_run_at": null,
+      "args": "[]",
+      "enabled": true,
+      "routing_key": null,
+      "crontab": 2,
+      "interval": null,
+      "queue": null,
+      "total_run_count": 0,
+      "expires": null,
+      "kwargs": "{}",
+      "date_changed": "2011-07-30 15:25:17"
     }
   },
   {
@@ -45,6 +65,15 @@
     "fields": {
       "day_of_week": "*",
       "hour": "4",
+      "minute": "0"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "djcelery.crontabschedule",
+    "fields": {
+      "day_of_week": "*",
+      "hour": "0",
       "minute": "0"
     }
   },
