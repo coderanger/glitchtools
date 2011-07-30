@@ -167,6 +167,10 @@ djcelery.setup_loader()
 
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 BROKER_BACKEND = 'redis'
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_PASSWORD = ''
+
 
 GLITCH_API_CREDENTIALS = json.load(open(os.path.join(PROJECT_ROOT, '.glitchapi.txt')))
 GLITCH_API_URL = 'http://api.glitch.com'
