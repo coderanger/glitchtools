@@ -1,0 +1,33 @@
+[
+  {
+    "pk": 3,
+    "model": "auth.user",
+    "fields": {
+      "username": "Urthen",
+      "first_name": "",
+      "last_name": "",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2011-07-30 14:17:48",
+      "groups": [],
+      "user_permissions": [],
+      "password": "",
+      "email": "",
+      "date_joined": "2011-07-30 14:05:31"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "users.glitchuser",
+    "fields": {
+      "tsid": "PHV14LMT3T62N2T",
+      "last_update": "2011-07-30 21:46:29",
+      "token": " ",
+      "last_login": "2011-07-30 21:27:35",
+      "user": 3,
+      "scope": 1,
+      "location": ""
+    }
+  }
+]
