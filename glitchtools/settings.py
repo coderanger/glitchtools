@@ -99,7 +99,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'glitchtools.auth.middleware.GlitchUserMiddleware',
+    'glitchtools.users.middleware.GlitchUserMiddleware',
 )
 
 ROOT_URLCONF = 'glitchtools.urls'
@@ -120,7 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'djcelery',
     'south',
-    'glitchtools.auth',
+    'glitchtools.users',
     'glitchtools.core',
 )
 

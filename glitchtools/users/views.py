@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 import requests
 
-from glitchtools.auth.models import GlitchUser
+from glitchtools.users.models import GlitchUser
 from glitchtools.utils import json
 from glitchtools.utils.db import update
 
@@ -14,7 +14,7 @@ def login(request):
     args = {
         'response_type': 'code',
         'scope': 'identity',
-        'redirect_uri': request.build_absolute_uri(reverse('glitchtools-auth-token')),
+        'redirect_uri': request.build_absolute_uri(reverse('glitchtools-users-token')),
         'client_id': settings.GLITCH_API_CREDENTIALS['key'],
     }
     if 'next' in request.GET:
@@ -32,7 +32,7 @@ def token(request):
         'code': request.GET['code'],
         'client_id': settings.GLITCH_API_CREDENTIALS['key'],
         'client_secret': settings.GLITCH_API_CREDENTIALS['secret'],
-        'redirect_uri': request.build_absolute_uri(reverse('glitchtools-auth-token')),
+        'redirect_uri': request.build_absolute_uri(reverse('glitchtools-users-token')),
     }, timeout=2)
     if r.status_code != 200:
         raise Exception(r.content)
