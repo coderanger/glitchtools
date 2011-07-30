@@ -14,5 +14,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+    url(r'^login/', 'glitchtools.core.views.login'),
     url(r'', 'glitchtools.core.views.comingsoon'),
 )

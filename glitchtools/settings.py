@@ -1,5 +1,8 @@
 # Django settings for glitchtools project.
 import os
+
+from django.utils import simplejson as json
+
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = True
@@ -142,3 +145,6 @@ LOGGING = {
         },
     }
 }
+
+GLITCH_API_CREDENTIALS = json.load(open(os.path.join(PROJECT_ROOT, '.glitchapi.txt')))
+
