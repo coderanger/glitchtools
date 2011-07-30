@@ -4,4 +4,6 @@
 *.pyo
 .sass-cache
 *.css
+.glitchapi*.txt
+*.db
 
