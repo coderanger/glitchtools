@@ -21,6 +21,7 @@ def login(request):
         args['state'] = request.GET['next']
     return HttpResponseRedirect(settings.GLITCH_API_URL+'/oauth2/authorize?'+urllib.urlencode(args))
 
+
 def token(request):
     if 'error' in request.GET:
         raise Exception(request.GET['error'])
