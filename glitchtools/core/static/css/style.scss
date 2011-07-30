@@ -1,11 +1,31 @@
-// Imports -------------------------------------------------------------------
-
+@import "compass/reset";
 @import "base";
 //@import "boilerplate";
 
-/* Layout ------------------------------------------------------------------*/
+body {
+  font-family: 'Droid Sans', sans-serif;
+}
 
 #container {
   @include container;
   @include susy-grid-background;
+}
+
+header {
+  @include full;
+  @include prefix(1);
+  padding-top: 20px;
+  height: 50px;
+  background-color: #68CCE8;
+
+  #logo {
+    color: black;
+    font-size: 200%;
+  }
+}
+
+#main {
+  @include alpha;
+  @include columns(12);
+  @include omega;
 }
