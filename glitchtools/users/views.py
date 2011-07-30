@@ -2,10 +2,9 @@ import urllib
 
 from django.conf import settings
 from django.contrib.auth import authenticate, login as django_login
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-import requests
+from requests import async as requests
 
 from glitchtools.users.models import GlitchUser
 from glitchtools.utils import json

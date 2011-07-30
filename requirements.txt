@@ -3,3 +3,4 @@ Django-Celery
 requests
 South
 redis==2.4.9
+eventlet
