@@ -13,7 +13,7 @@ body {
 
 header {
   @include full;
-  @include prefix(1);
+  @include pad(1, 1);
   padding-top: 20px;
   height: 50px;
   background-color: #68CCE8;

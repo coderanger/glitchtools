@@ -1,6 +1,7 @@
 import urllib
 
 from django.conf import settings
+from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
@@ -39,14 +40,10 @@ def token(request):
     token = json.loads(r.content)
     auth = request.glitch_api.auth.check(oauth_token=token['access_token'])
     scope = GlitchUser.SCOPES_MAP[token['scope']]
-    try:
-        glitch_user = GlitchUser.objects.get(tsid=auth['player_tsid'])
-        if glitch_user.scope < scope:
-            update(glitch_user, token=token['access_token'], scope=scope)
-    except GlitchUser.DoesNotExist:
-        # New user, create them
-        user = User.objects.create_user(auth['player_name'], '', '')
-        glitch_user = GlitchUser.objects.create(user=user, tsid=auth['player_tsid'], token=token['access_token'], scope=scope)
+    user = authenticate(username=auth['player_name'], tsid=auth['player_tsid'], token=token['access_token'], scope=scope)
+    if user.glitch_user.scope < scope:
+        update(user.glitch_user, token=token['access_token'], scope=scope)
+    django_login(request, user)
     next = request.GET.get('state', '/')
     if not next.startswith('/'):
         next = '/'
