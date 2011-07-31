@@ -55,3 +55,16 @@ def update_street_info(tsid):
             connection_street = Street.objects.create(hub_id=vals['hub']['id'], tsid=connection_tsid, name=vals['name'])
         street.connections.add(connection_street)
     update(street, last_update=datetime.datetime.utcnow())
+
+
+@task
+def find_street(start_tsid, dest_tsid):
+    start_street = Street.object.get(tsid=start_tsid)
+    def fn(street):
+        return street.tsid == dest_tsid
+    return start_street.search(fn)
+
+
+@task
+def find_feature(tsid, feature):
+    pass
