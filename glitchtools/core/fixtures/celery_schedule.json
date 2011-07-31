@@ -26,17 +26,17 @@
       "task": "glitchtools.users.tasks.update_users",
       "name": "Update users",
       "exchange": null,
-      "last_run_at": "2011-07-30 15:25:14",
+      "last_run_at": "2011-07-31 01:33:30",
       "args": "[]",
       "enabled": true,
       "routing_key": null,
       "crontab": null,
       "interval": 1,
       "queue": null,
-      "total_run_count": 349,
+      "total_run_count": 1060,
       "expires": null,
       "kwargs": "{}",
-      "date_changed": "2011-07-30 15:25:19"
+      "date_changed": "2011-07-31 01:33:35"
     }
   },
   {
@@ -60,6 +60,46 @@
     }
   },
   {
+    "pk": 4,
+    "model": "djcelery.periodictask",
+    "fields": {
+      "task": "glitchtools.map.tasks.update_streets_info",
+      "name": "Update streets info",
+      "exchange": null,
+      "last_run_at": null,
+      "args": "[]",
+      "enabled": true,
+      "routing_key": null,
+      "crontab": null,
+      "interval": 2,
+      "queue": null,
+      "total_run_count": 0,
+      "expires": null,
+      "kwargs": "{}",
+      "date_changed": "2011-07-31 01:31:32"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "djcelery.periodictask",
+    "fields": {
+      "task": "glitchtools.map.tasks.update_streets",
+      "name": "Update streets",
+      "exchange": null,
+      "last_run_at": null,
+      "args": "[]",
+      "enabled": true,
+      "routing_key": null,
+      "crontab": null,
+      "interval": 3,
+      "queue": null,
+      "total_run_count": 0,
+      "expires": null,
+      "kwargs": "{}",
+      "date_changed": "2011-07-31 01:33:33"
+    }
+  },
+  {
     "pk": 1,
     "model": "djcelery.crontabschedule",
     "fields": {
@@ -78,11 +118,36 @@
     }
   },
   {
+    "pk": 3,
+    "model": "djcelery.crontabschedule",
+    "fields": {
+      "day_of_week": "*",
+      "hour": "*",
+      "minute": "*/15"
+    }
+  },
+  {
     "pk": 1,
     "model": "djcelery.intervalschedule",
     "fields": {
       "every": 15,
       "period": "seconds"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "djcelery.intervalschedule",
+    "fields": {
+      "every": 15,
+      "period": "minutes"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "djcelery.intervalschedule",
+    "fields": {
+      "every": 1,
+      "period": "hours"
     }
   }
 ]
