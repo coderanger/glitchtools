@@ -34,7 +34,7 @@ def update_street(hub_id):
 @task(ignore_result=True)
 def update_streets_info():
     update_cutoff = datetime.datetime.utcnow() - datetime.timedelta(hours=12)
-    for tsid in Street.objects.filter(last_update__lt=update_cutoff).values_list('tsid', flat=True):
+    for tsid in Street.objects.filter(last_update__lt=update_cutoff, deleted=False).values_list('tsid', flat=True):
         update_street_info.apply_async(args=[tsid])
 
 
