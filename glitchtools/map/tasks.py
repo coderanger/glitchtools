@@ -26,7 +26,7 @@ def update_street(hub_id):
     seen_ids = set()
     for tsid, vals in streets['streets'].iteritems():
         seen_ids.add(tsid)
-        Street.objects.get_or_create(hub=hub_id, tsid=tsid, defaults={'name': vals['name']})
+        Street.objects.get_or_create(hub_id=hub_id, tsid=tsid, defaults={'name': vals['name']})
     # Block any we didn't see
     Street.objects.filter(hub=hub_id).exclude(tsid__in=seen_ids).update(deleted=True)
 
