@@ -6,7 +6,7 @@ from glitchtools.users.models import GlitchUser
 from glitchtools.utils.api import api
 from glitchtools.utils.redis import redis
 
-@task
+@task(ignore_result=True)
 def update_users():
     update_cutoff = datetime.datetime.utcnow() - datetime.timedelta(minutes=1)
     login_cutoff = datetime.datetime.utcnow() - datetime.timedelta(hours=1)
@@ -14,7 +14,7 @@ def update_users():
         update_user.apply_async(args=[tsid])
 
 
-@task
+@task(ignore_result=True)
 def update_user(tsid):
     lock = redis.lock('celery-lock-update_user-%s'%tsid, 300)
     if lock.acquire(False):
