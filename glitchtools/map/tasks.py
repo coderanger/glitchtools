@@ -48,6 +48,6 @@ def update_street_info(tsid):
             connection_street = Street.objects.get(tsid=connection_tsid)
         except Street.DoesNotExist:
             vals = info['connections'][connection_tsid]
-            connection_street = Street.objects.create(hub=vals['hub']['id'], tsid=connection_tsid, name=vals['name'])
+            connection_street = Street.objects.create(hub_id=vals['hub']['id'], tsid=connection_tsid, name=vals['name'])
         street.connections.add(connection_street)
     update(street, last_update=datetime.datetime.utcnow())
