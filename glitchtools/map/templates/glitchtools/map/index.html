@@ -1,0 +1,52 @@
+{% extends 'glitchtools/map/layout.html' %}
+
+{% block content %}
+<div id="map" class="index">
+  <div class="loc-select">
+    {% if current_location %}
+    <div class="current">
+      <a class="street" data-tsid="{{ current_location.tsid }}">{{ current_location.name }}</a>
+    </div>
+    {% endif %}
+    <div class="region-select">
+      <ul>
+        {% for hub in hubs %}
+        <li><a href="#" data-hub="{{ hub.id }}">{{ hub.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="street-select">
+      <ul>
+        {% for street in streets %}
+        <li><a class="street" href="#" data-hub="{{ street.hub_id }}" data-tsid="{{ street.tsid }}">{{ street.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="search">
+    What do you want to look for?
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}{{ block.super }}
+<script type="text/javascript">
+  $(function() {
+    $('.region-select a').click(function() {
+      var elm = $(this);
+      $('.region-select').hide();
+      $('.street-select').show().find('a').each(function() {
+        var streetElm = $(this);
+        if(streetElm.data('hub') == elm.data('hub')) {
+          streetElm.show();
+        }
+      });
+      return false;
+    });
+
+    $('.street').click(function() {
+      
+    });
+  });
+</script>
+{% endblock %}

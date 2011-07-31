@@ -1,0 +1,17 @@
+@import "base";
+
+#map {
+  .loc-select {
+    @include columns(3, 12);
+  }
+
+  .search {
+    @include columns(9, 12);
+    @include omega(12);
+  }
+
+  .street-select {
+    display: none;
+    .street { display: none; }
+  }
+}

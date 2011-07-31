@@ -46,6 +46,7 @@ def update_streets_info(force=False):
 def update_street_info(tsid):
     info = api.locations.streetInfo(street_tsid=tsid)
     street = Street.objects.get(tsid=tsid)
+    street.set_features(info['features'])
     street.connections.exclude(tsid__in=info['connections']).delete()
     for connection_tsid in info['connections'].iterkeys():
         try:
@@ -67,4 +68,9 @@ def find_street(start_tsid, dest_tsid):
 
 @task
 def find_feature(tsid, feature):
-    pass
+    # Normalize to lowercase
+    feature = feature.lower()
+    start_street = Street.object.get(tsid=tsid)
+    def fn(street):
+        return street.current_features.filter(feature=feature)
+    return start_street.search(fn)
