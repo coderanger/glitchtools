@@ -16,11 +16,15 @@ header {
   @include pad(1, 1);
   padding-top: 20px;
   height: 50px;
-  background-color: #68CCE8;
+  //background-color: #68CCE8;
 
   #logo {
     color: black;
     font-size: 200%;
+  }
+
+  #usernav {
+    float: right;
   }
 }
 

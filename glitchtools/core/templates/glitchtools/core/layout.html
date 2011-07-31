@@ -22,7 +22,6 @@
 <body>
   <div id="container">
     <header>
-      <div id="logo">Glitch Plus</div>
       <div id="usernav">
         {% if user.is_authenticated %}
         <a href="#">{{ user.username }}</a>
@@ -31,6 +30,7 @@
         <a href="{% url 'glitchtools-users-login' %}?next={{ request.get_full_path }}">{% trans 'Login' %}</a>
         {% endif %}
       </div>
+      <div id="logo">Glitch Plus</div>
     </header>
 
     <div id="main" role="main">
